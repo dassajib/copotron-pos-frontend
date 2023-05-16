@@ -33,7 +33,7 @@ function Tables() {
       .catch((err) => console.log(err));
   }, []);
 
-  // form submit
+  // category post
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -61,13 +61,13 @@ function Tables() {
     setFormData({ name: "" });
   };
 
-  // form input
+  // category post form input
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ [name]: value });
   };
 
-  // delete item
+  // delete category
   const handleDelete = (id) => {
     fetch(`http://127.0.0.1:8000/api/v1/product/category/${id}/`, {
       method: "DELETE",
