@@ -67,6 +67,18 @@ function Tables() {
     setFormData({ [name]: value });
   };
 
+  // delete item
+  const handleDelete = (id) => {
+    fetch(`http://127.0.0.1:8000/api/v1/product/category/${id}/`, {
+      method: "DELETE",
+    }).then(res => {
+      alert('Deleted Successfully.')
+    }).catch((err) => {
+      console.log(err);
+    });
+    setCategory(category.filter((categoryItem) => categoryItem.id !== id));
+  };
+
   return (
     <>
       <div className="content">
@@ -128,10 +140,22 @@ function Tables() {
                         <td>{categoryItem.id}</td>
                         <td tag="h1">{categoryItem.name}</td>
                         <td className="">
-                          <button href="" className="btn btn-success mx-1">
+                          <button
+                            // onClick={() => {
+                            //   loadEdit(categoryItem.id);
+                            // }}
+                            href=""
+                            className="btn btn-success mx-1"
+                          >
                             Edit
                           </button>
-                          <button href="" className="btn btn-warning mx-1">
+                          <button
+                            onClick={() => {
+                              handleDelete(categoryItem.id);
+                            }}
+                            href=""
+                            className="btn btn-warning mx-1"
+                          >
                             Remove
                           </button>
                         </td>
