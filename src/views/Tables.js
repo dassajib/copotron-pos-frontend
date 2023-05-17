@@ -26,7 +26,12 @@ function Tables() {
   const [formData, setFormData] = useState({ name: "" });
 
   const toggle = () => setModal(!modal);
-  const editToggle = () => setEditModal(!editModal);
+
+  const editToggle = (name) => {
+    setEditModal(!editModal);
+    console.log(name);
+    
+  };
 
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/v1/product/category")
@@ -88,8 +93,9 @@ function Tables() {
     // handleFormSubmit();
   };
 
-  const handleEditInputChange = () => {
-    return 0;
+  const handleEditInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ [name]: value });
   };
 
   // delete category
@@ -167,7 +173,12 @@ function Tables() {
                         <td>{categoryItem.id}</td>
                         <td tag="h1">{categoryItem.name}</td>
                         <td className="">
-                          <Button onClick={editToggle} type="button">
+                          <Button
+                            onClick={() => {
+                              editToggle(categoryItem.name);
+                            }}
+                            type="button"
+                          >
                             Edit
                           </Button>
 
@@ -180,47 +191,55 @@ function Tables() {
                           >
                             Delete
                           </Button>
+                          <Modal isOpen={editModal} toggle={editToggle}>
+                          <ModalHeader toggle={editToggle}>
+                            Category Edit Form
+                          </ModalHeader>
+                          <ModalBody>
+                            <Form
+                              onSubmit={() => {
+                                handleEditFormSubmit(
+                                  categoryItem.id,
+                                  categoryItem.name
+                                );
+                              }}
+                            >
+                              <FormGroup row>
+                                <Label for="text" sm={2}>
+                                  Name
+                                </Label>
+                                <Col sm={10}>
+                                  <Input
+                                    value={formData.name}
+                                    onChange={handleEditInputChange}
+                                    required
+                                    id="name"
+                                    name="name"
+                                    placeholder="with a Item Name"
+                                    type="text"
+                                  />
+                                </Col>
+                              </FormGroup>
+                              <Button color="secondary" onClick={editToggle}>
+                                Cancel
+                              </Button>
+                              <Button
+                                color="primary"
+                                onClick={editToggle}
+                                type="submit"
+                                value="Submit"
+                              >
+                                Save
+                              </Button>
+                            </Form>
+                          </ModalBody>
+                        </Modal>
                         </td>
+                        
                       </tr>
                     ))}
                   </tbody>
                 </Table>
-                <Modal isOpen={editModal} toggle={editToggle}>
-                  <ModalHeader toggle={editToggle}>
-                    Category Edit Form
-                  </ModalHeader>
-                  <ModalBody>
-                    <Form onSubmit={handleEditFormSubmit}>
-                      <FormGroup row>
-                        <Label for="text" sm={2}>
-                          Name
-                        </Label>
-                        <Col sm={10}>
-                          <Input
-                            value={formData.name}
-                            onChange={handleEditInputChange}
-                            required
-                            id="name"
-                            name="name"
-                            placeholder="with a Item Name"
-                            type="text"
-                          />
-                        </Col>
-                      </FormGroup>
-                      <Button color="secondary" onClick={editToggle}>
-                        Cancel
-                      </Button>
-                      <Button
-                        color="primary"
-                        onClick={editToggle}
-                        type="submit"
-                        value="Submit"
-                      >
-                        Save
-                      </Button>
-                    </Form>
-                  </ModalBody>
-                </Modal>
               </CardBody>
             </Card>
           </Col>

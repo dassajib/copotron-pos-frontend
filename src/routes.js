@@ -1,7 +1,7 @@
 import Dashboard from "views/Dashboard.js";
 import Notifications from "views/Notifications.js";
 import Icons from "views/Icons.js";
-import Typography from "views/Typography.js";
+import Staff from "views/Staff.js";
 import TableList from "views/Tables.js";
 import UserPage from "views/User.js";
 
@@ -42,10 +42,10 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/typography",
-    name: "Typography",
+    path: "/staff",
+    name: "Staff",
     icon: "nc-icon nc-caps-small",
-    component: Typography,
+    component: Staff,
     layout: "/admin"
   },
 ];
