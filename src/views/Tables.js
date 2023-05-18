@@ -19,7 +19,7 @@ import {
   FormGroup,
 } from "reactstrap";
 
-function Tables() {
+function Category() {
   const [category, setCategory] = useState([]);
   const [modal, setModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
@@ -249,4 +249,4 @@ function Tables() {
   );
 }
 
-export default Tables;
+export default Category;

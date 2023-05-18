@@ -19,11 +19,14 @@ import {
   Table,
 } from "reactstrap";
 
-function Typography() {
+function Staff() {
   const [staffs, setStaffs] = useState([]);
-  const [staffFormData, setStaffFormData] = useState(
-    { name: "", category: "", phone: "", address: "" },
-  );
+  const [staffFormData, setStaffFormData] = useState({
+    name: "",
+    category: "",
+    phone: "",
+    address: "",
+  });
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
@@ -31,7 +34,8 @@ function Typography() {
   // staff data
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/v1/staff")
-      .then((res) => res.json().then((data) => setStaffs(data.data)))
+      .then((res) => res.json())
+      .then((data) => setStaffs(data.data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -199,4 +203,4 @@ function Typography() {
   );
 }
 
-export default Typography;
+export default Staff;
