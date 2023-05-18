@@ -76,6 +76,7 @@ function Staff() {
       [phone]: value,
       [address]: address,
     });
+    console.log(name,category,phone,address)
   };
 
   return (

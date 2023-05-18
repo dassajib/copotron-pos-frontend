@@ -2,7 +2,7 @@ import Dashboard from "views/Dashboard.js";
 import Notifications from "views/Notifications.js";
 import Icons from "views/Icons.js";
 import Staff from "views/Staff.js";
-import TableList from "views/Tables.js";
+import Category from "views/Categories.js";
 import UserPage from "views/User.js";
 
 var routes = [
@@ -38,7 +38,7 @@ var routes = [
     path: "/category",
     name: "Category",
     icon: "nc-icon nc-tile-56",
-    component: TableList,
+    component: Category,
     layout: "/admin"
   },
   {
