@@ -74,9 +74,9 @@ function Staff() {
       [name]: value,
       [category]: value,
       [phone]: value,
-      [address]: address,
+      [address]: value,
     });
-    console.log(name,category,phone,address)
+    console.log(name, category, phone, address);
   };
 
   return (
@@ -191,6 +191,13 @@ function Staff() {
                         <td>{staff.category}</td>
                         <td>{staff.phone}</td>
                         <td>{staff.address}</td>
+                        <td className="">
+                          <Button type="button">Edit</Button>
+
+                          <Button href="" className="btn btn-danger mx-1">
+                            Delete
+                          </Button>
+                        </td>
                       </tr>
                     ))}
                   </tbody>

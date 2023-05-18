@@ -19,7 +19,7 @@ import {
   FormGroup,
 } from "reactstrap";
 
-function Category() {
+function Categories() {
   const [category, setCategory] = useState([]);
   const [modal, setModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
@@ -30,7 +30,6 @@ function Category() {
   const editToggle = (name) => {
     setEditModal(!editModal);
     console.log(name);
-    
   };
 
   useEffect(() => {
@@ -72,6 +71,7 @@ function Category() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ [name]: value });
+    // console.log(name,value)
   };
 
   // category item edit
@@ -235,7 +235,6 @@ function Category() {
                           </ModalBody>
                         </Modal>
                         </td>
-                        
                       </tr>
                     ))}
                   </tbody>
@@ -249,4 +248,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default Categories;
